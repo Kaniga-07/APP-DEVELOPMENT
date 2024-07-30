@@ -1,0 +1,313 @@
+/* General layout styles */
+.con {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+.sidebar {
+  background-color: rgb(230, 253, 252);
+  color: #1eb2a6;
+  padding: 20px;
+  width: 220px;
+  height: calc(100% - 90px); /* Adjusted for header and footer height */
+  position: absolute;
+  padding-bottom: 100px;
+  left: 0;
+  overflow-y: auto;
+  border-right: 1px solid rgb(230, 253, 252);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin-bottom: 15px;
+}
+
+.sidebar a {
+  color: #1eb2a6;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: #0000;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  color: #333;
+}
+
+.sidebar .icon {
+  margin-right: 10px;
+}
+
+.main-contents {
+  margin-left: 240px;
+  margin-top: 55px; /* Adjusted for header height */
+  margin-bottom: 55px; /* Adjusted for footer height */
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+/* Courses section */
+.enrolledCourses ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.enrolledCourses li {
+  border: 1px solid #cbd5e0;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #edf2f7;
+  transition: box-shadow 0.3s;
+  flex: 1 1 calc(33.333% - 20px); /* Adjust the width for 3 items per row */
+  box-sizing: border-box;
+}
+
+.enrolledCourses li:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.enrolledCourses h3 {
+  margin: 0 0 15px;
+  font-size: 1.25em;
+}
+
+.enrolledCourses .pie-chart {
+  width: 200px;
+  margin: 0 auto 15px;
+}
+
+/* Assignments section */
+.assignments form {
+  display: flex;
+  flex-direction: column;
+}
+
+.assignments textarea {
+  margin-top: 10px;
+  resize: none;
+  padding: 10px;
+  border: 1px solid #cbd5e0;
+  border-radius: 5px;
+}
+
+.assignments button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.assignments button:hover {
+  background-color: #2b6cb0;
+}
+
+.upload-status {
+  margin-top: 20px;
+}
+
+.status-message {
+  background-color: #e6fffa;
+  border: 1px solid #b2f5ea;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  color: #2c7a7b;
+}
+
+.status-icon {
+  margin-right: 10px;
+}
+
+.uploaded-files {
+  margin-top: 10px;
+}
+
+.uploaded-files ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.uploaded-files li {
+  margin-bottom: 5px;
+}
+
+.uploaded-files a {
+  color: #3182ce;
+  text-decoration: none;
+}
+
+.uploaded-files a:hover {
+  text-decoration: underline;
+}
+
+/* Discussion forums section */
+.forum-container {
+  border: 1px solid #cbd5e0;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #edf2f7;
+}
+
+.forum-thread {
+  margin-bottom: 20px;
+}
+
+.forum-thread h3 {
+  margin: 0 0 10px;
+  font-size: 1.25em;
+}
+
+.comments-section {
+  border-top: 1px solid #cbd5e0;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.comments-section h4 {
+  margin: 0 0 10px;
+}
+
+.comment {
+  border: 1px solid #cbd5e0;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.comment-actions a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: blue;
+  transition: color 0.3s;
+}
+
+.comment-actions a:hover {
+  color: #4ccdc2;
+}
+
+.comment-form textarea {
+  margin-top: 10px;
+  resize: none;
+  padding: 10px;
+  border: 1px solid #cbd5e0;
+  border-radius: 5px;
+}
+
+.comment-form button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #1eb2a6;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.comment-form button:hover {
+  background-color: #298981;
+}
+
+/* Settings section */
+.settings form {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings label {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.settings input {
+  margin-top: 5px;
+  padding: 10px;
+  border: 1px solid #cbd5e0;
+  border-radius: 5px;
+}
+
+.settings button {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #3182ce;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.settings button:hover {
+  background-color: #2b6cb0;
+}
+
+/* Performance section */
+.charts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.chart {
+  width: 100%;
+  max-width: 48%;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #edf2f7;
+  border: 1px solid #cbd5e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.chart:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.performance-summary {
+  margin-top: 20px;
+}
+
+.summary-cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.summary-card {
+  width: 100%;
+  max-width: 48%;
+  border: 1px solid #cbd5e0;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #edf2f7;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s;
+}
+
+.summary-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

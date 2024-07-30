@@ -1,0 +1,113 @@
+/*--------head------------*/
+/* Head.css */
+
+.head {
+  padding: 20px 0;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-buttons button {
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auth-buttons .login-signup-btn {
+  background-color: #1eb2a6;
+  color: white;
+}
+
+.auth-buttons .login-signup-btn:hover {
+  background-color: #169d90;
+}
+
+.auth-buttons .admin-login-btn {
+  color: #ff5733;
+  background-color: white;
+}
+
+.auth-buttons .admin-login-btn:hover {
+  background-color: #e04b29;
+}
+
+/*--------head------------*/
+/*--------header------------*/
+header {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+header .nav {
+  display: flex !important;
+}
+header li {
+  margin-right: 40px;
+  padding-left: 20px ;
+}
+header ul {
+  padding: 30px 20px;
+}
+header ul li a {
+  color:rgb(228, 228, 13);
+  font-weight: 500;
+  transition: 0.5s;
+}
+header ul li a:hover {
+  color: #1eb2a6;
+}
+.start {
+  background-color: #1eb2a6;
+  padding: 30px 70px;
+  color: #fff;
+  clip-path: polygon(10% 0%, 100% 0, 100% 100%, 0% 100%);
+}
+.toggle {
+  display: none;
+}
+/*--------header------------*/
+@media screen and (max-width: 768px) {
+  .start {
+    clip-path: none;
+  }
+  header {
+    margin: 0;
+    background-color: #1eb2a6;
+    position: relative;
+  }
+  header ul.flexSB {
+    display: none;
+  }
+  header ul li {
+    margin-bottom: 20px;
+  }
+  .toggle {
+    display: block;
+    background: none;
+    color: #fff;
+    font-size: 30px;
+    position: absolute;
+    right: 0;
+    top: -20px;
+  }
+  .mobile-nav {
+    position: absolute;
+    top: 7vh;
+    left: 0;
+    width: 100%;
+    background-color: #1eb2a6;
+  }
+}

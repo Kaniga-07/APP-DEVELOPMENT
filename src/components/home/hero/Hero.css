@@ -1,0 +1,79 @@
+.hero {
+  background-image: url("../../../../public/images/bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+  padding-top: 20%;
+  padding-right: 50px;
+  color: #fff;
+}
+.hero #heading h3 {
+  color: #fff;
+}
+.hero #heading {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+@media screen and (max-width: 768px) {
+  .margin {
+    height: 40vh;
+  }
+  .hero {
+    background-position: right;
+    padding-top: 50%;
+    height: 80vh;
+  }
+  .hero .row {
+    width: 100%;
+  }
+}
+
+.bu {
+  display: flex;
+  gap: 15px;
+}
+
+.bu .pri-btn,
+.bu button {
+  padding: 15px 30px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.bu .pri-btn {
+  background-color: #1eb2a6;
+  color: #fff;
+}
+
+.bu button {
+  background-color: #fff;
+  color: 1eb2a6;
+}
+
+.bu .pri-btn:hover,
+.bu button:hover {
+  background-color: #3b7c77;
+  color: #fff;
+}
+
+.bu .pri-btn i,
+.bu button i {
+  margin-left: 10px;
+  transition: transform 0.3s ease;
+}
+
+.bu .pri-btn:hover i,
+.bu button:hover i {
+  transform: translateX(5px);
+}
+

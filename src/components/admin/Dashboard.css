@@ -1,0 +1,41 @@
+/* Dashboard.css */
+.orders-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .orders-table th, .orders-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .orders-table th {
+    background-color: #1eb2a6;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .orders-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .orders-table tr:hover {
+    background-color: #e2f1f0;
+  }
+  
+  /* Additional styles */
+  .MuiDrawer-paper {
+    background-color: #1eb2a6; /* Sidebar background color */
+    color: white;
+    width: 240px; /* Adjust width as needed */
+  }
+  
+  .MuiDrawer-paper .MuiListItemIcon-root {
+    color: white; /* Icon color in sidebar */
+  }
+  
+  .MuiDrawer-paper .MuiTypography-root {
+    color: white; /* Text color in sidebar */
+  }
+  
