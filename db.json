@@ -1,0 +1,66 @@
+{
+  "users": [
+    {
+      "id": "226d",
+      "username": "kaniga",
+      "email": "727722euai026@skcet.ac.in",
+      "password": "kani@123"
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "title": "Introduction to React",
+      "completion": 75,
+      "grade": "B"
+    },
+    {
+      "id": "2",
+      "title": "Advanced JavaScript",
+      "completion": 25,
+      "grade": "F"
+    },
+    {
+      "id": "3",
+      "title": "CSS Mastery",
+      "completion": 70,
+      "grade": "A"
+    },
+    {
+      "id": "4",
+      "title": "React",
+      "completion": 60,
+      "grade": "B"
+    },
+    {
+      "id": "5",
+      "title": "JavaScript",
+      "completion": 50,
+      "grade": "B"
+    },
+    {
+      "id": "6",
+      "title": "CSS",
+      "completion": 30,
+      "grade": "F"
+    },
+    {
+      "id": "7",
+      "title": "Introduction to React",
+      "completion": 95,
+      "grade": "A"
+    },
+    {
+      "id": "8",
+      "title": "DAA",
+      "completion": 55,
+      "grade": "B"
+    },
+    {
+      "id": "9",
+      "title": "HTML & CSS",
+      "completion": 85,
+      "grade": "A"
+    }
+  ]
+}
