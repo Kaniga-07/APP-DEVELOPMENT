@@ -20,8 +20,6 @@ const AdminLogin = () => {
   return (
     <div className='admin-login-wrapper'>
       <div className='admin-login-image'>
-        {/* Replace 'image-url.jpg' with the path to your image */}
-        <img src='image-url.jpg' alt='Login' />
       </div>
       <div className='admin-login-container'>
         <h2 style={{color:"white"}}>Admin Login</h2>

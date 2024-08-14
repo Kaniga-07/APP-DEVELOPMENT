@@ -65,7 +65,64 @@ const dummyData = {
   }
 };
 
-const EnrolledCourses = ({ courses }) => {
+const courses = [
+  {
+    id: "1",
+    title: "Introduction to React",
+    completion: 75,
+    grade: "B"
+  },
+  {
+    id: "2",
+    title: "Advanced JavaScript",
+    completion: 25,
+    grade: "F"
+  },
+  {
+    id: "3",
+    title: "CSS Mastery",
+    completion: 70,
+    grade: "A"
+  },
+  {
+    id: "4",
+    title: "React",
+    completion: 60,
+    grade: "B"
+  },
+  {
+    id: "5",
+    title: "JavaScript",
+    completion: 50,
+    grade: "B"
+  },
+  {
+    id: "6",
+    title: "CSS",
+    completion: 30,
+    grade: "F"
+  },
+  {
+    id: "7",
+    title: "Introduction to React",
+    completion: 95,
+    grade: "A"
+  },
+  {
+    id: "8",
+    title: "DAA",
+    completion: 55,
+    grade: "B"
+  },
+  {
+    id: "9",
+    title: "HTML & CSS",
+    completion: 85,
+    grade: "A"
+  }
+];
+
+const EnrolledCourses = () => {
   const [activeSection, setActiveSection] = useState('courses');
 
   const handleSectionChange = (section) => {
@@ -121,7 +178,7 @@ const EnrolledCourses = ({ courses }) => {
   return (
     <div className="con">
       <header className="header">
-
+        {/* Header content here */}
       </header>
       <aside className="sidebar">
         <ul>
@@ -135,18 +192,6 @@ const EnrolledCourses = ({ courses }) => {
             <a href="#" onClick={() => handleSectionChange('assignments')}>
               <span className="icon">📝</span>
               Assignments
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={() => handleSectionChange('discussion-forums')}>
-              <span className="icon">💬</span>
-              Discussion Forums
-            </a>
-          </li>
-          <li>
-            <a href="#" onClick={() => handleSectionChange('settings')}>
-              <span className="icon">⚙️</span>
-              Settings
             </a>
           </li>
           <li>
@@ -207,48 +252,6 @@ const EnrolledCourses = ({ courses }) => {
                 </ul>
               </div>
             </div>
-          </section>
-        )}
-
-        {activeSection === 'discussion-forums' && (
-          <section className="discussion-forums">
-            <h2>Discussion Forums</h2>
-            <div className="forum-container">
-              <div className="forum-thread">
-                <h3>Thread Title</h3>
-                <p>Thread content goes here...</p>
-                <div className="comments-section">
-                  <h4>Comments</h4>
-                  <div className="comment">
-                    <p>Comment content goes here...</p>
-                    <div className="comment-actions">
-                      <a href="#">Reply</a>
-                      <a href="#">Edit</a>
-                      <a href="#">Delete</a>
-                    </div>
-                  </div>
-                  <div className="comment-form">
-                    <textarea rows="3" placeholder="Write a comment..."></textarea>
-                    <button type="submit">Post Comment</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {activeSection === 'settings' && (
-          <section className="settings">
-            <h2>Settings</h2>
-            <form>
-              <label htmlFor="username">Username:</label>
-              <input type="text" id="username" />
-              <label htmlFor="email">Email:</label>
-              <input type="text" id="Email" />
-              <label htmlFor="password">Password:</label>
-              <input type="password" id="password" />
-              <button type="submit">Save Changes</button>
-            </form>
           </section>
         )}
 

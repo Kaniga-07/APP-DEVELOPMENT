@@ -1,73 +1,347 @@
-.admin-settings-wrapper {
+/* Container for the entire dashboard */
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 30%, #1eb2a6 100%);
+  color: #34495e;
+  overflow: hidden;
+  
+}
+
+/* Navigation Container */
+nav {
+  display: flex;
+  justify-content: center; /* Center align the navigation items */
+  background-color: transparent; /* Light background color */
+  padding: 10px 0; /* Vertical padding */
+  border-bottom: 1px solid #ddd; /* Light border at the bottom */
+}
+
+/* Navigation Links */
+.nav-link {
+  text-decoration: none; /* Remove underline */
+  color: #1eb2a6; /* Link color */
+  margin: 0 15px; /* Spacing between links */
+  font-size: 16px; /* Font size */
+  font-weight: 500; /* Medium font weight */
+  transition: color 0.3s, transform 0.3s; /* Smooth color and transform transitions */
+}
+
+/* Hover State for Navigation Links */
+.nav-link:hover {
+  color: #17a398; /* Darker shade of the link color */
+  transform: scale(1.05); /* Slightly enlarge the link */
+}
+
+/* Active State for Navigation Links */
+.nav-link.active {
+  font-weight: 700; /* Bold for active link */
+  border-bottom: 2px solid #1eb2a6; /* Underline effect for active link */
+  padding-bottom: 5px; /* Space between text and underline */
+}
+
+/* Main content styling */
+.ma {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Dashboard header styling */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.dashboard-header h2 {
+  font-size: 32px;
+  color: #2c3e50;
+  position: relative;
+  animation: titleGlow 2s infinite alternate;
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 10px #1eb2a6, 0 0 20px #1eb2a6, 0 0 30px #1eb2a6;
+  }
+  to {
+    text-shadow: 0 0 20px #16a085, 0 0 30px #16a085, 0 0 40px #16a085;
+  }
+}
+
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #1eb2a6;
+  transition: transform 0.3s ease;
+}
+
+.profile img:hover {
+  transform: scale(1.1);
+}
+
+.profile p {
+  font-size: 18px;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.add-button {
+  background-color: #1eb2a6;
+  color: white;
+  max-width: 80px;
+  display: flex;
+  margin-left: 2%;
+  margin-bottom: 1.2%;
+  padding: 8px 16px;
+  border-radius: 30px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #16a085;
+  transform: scale(1.1);
+}
+
+/* Courses section styling */
+.courses {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.course-card {
+  flex: 1;
+  background: linear-gradient(135deg, #ffffff 0%, #e6f5f4 100%);
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+}
+
+.course-card img {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #1eb2a6;
+  transition: transform 0.3s ease;
+}
+
+.course-card img:hover {
+  transform: rotate(360deg);
+}
+
+.course-card p {
+  font-size: 20px;
+  color: #2c3e50;
+  margin: 0;
+  font-weight: bold;
+}
+
+/* Teachers section styling */
+.teachers {
+  background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+  padding: 25px;
+
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.xxx{
+  align-items: flex-end;
+  display: flex;
+}
+.teachers h3 {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  position: relative;
+  animation: titleGlow 2s infinite alternate;
+}
+
+.teacher {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  animation: titleGlow 2s infinite alternate;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.teacher:hover {
+  background-color: #e6f5f4;
+  transform: scale(1.02);
+}
+
+.teacher img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+  border: 2px solid #1eb2a6;
+}
+
+.teacher div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.teacher p {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 18px;
+}
+
+.teacher p:nth-child(2) {
+  font-size: 16px;
+  color: #7f8c8d;
+}
+
+/* Action buttons */
+.teacher-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.edit-button,
+.delete-button {
+  background-color: #1eb2a6;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 16px;
+}
+
+.edit-button:hover {
+  background-color: #16a085;
+  transform: translateY(-2px);
+}
+
+.delete-button {
+  background-color: #e74c3c;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Form modal styling */
+.form-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: flex-start;
-  padding: 20px;
+  justify-content: center;
+  animation: fadeIn 0.5s;
+  z-index: 1000;
 }
 
-.image-container {
-  flex: 1;
-  margin-right: 20px;
+.form-cont{
+  background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+  padding: 30px;
+  border-radius: 15px;
+  width: 450px;
+  margin-top: 50px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-100%);
+  animation: slideDown 0.7s forwards ease-out;
 }
 
-.image-container img {
-  max-width: 100%;
-  height: auto;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(50%);
+  }
+}
+
+.submit-button,
+.close-button {
+  background-color: #1eb2a6;
+  color: white;
+  border: none;
+  padding: 12px;
   border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.settings-container {
-  flex: 2;
-  max-width: 600px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #f9f9f9;
-  margin-top: 20px; /* Added space at the top */
+.submit-button:hover {
+  background-color: #16a085;
+  transform: scale(1.05);
 }
 
-h2 {
-  margin-bottom: 15px;
-  font-size: 1.5em;
-  color: #333;
+.close-button {
+  background-color: #e74c3c;
+  margin-left: 10px;
 }
 
-p {
-  margin-bottom: 20px;
-  color: #666;
+.close-button:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
 }
 
-.mobile-verification, .password-change {
-  margin-bottom: 20px;
-}
-
-.input-field {
-  width: calc(100% - 110px);
-  padding: 10px;
-  margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-bottom: 15px; /* Space between input fields */
-}
-
-.verify-button, .change-password-button {
+.logout-button {
+  animation: titleGlow 2s infinite alternate;
+  color:black ;
+  background-color: transparent;
+  border-radius: 20%;
   padding: 10px 20px;
   border: none;
-  border-radius: 4px;
-  color: white;
-  background-color:#1eb2a6;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.verify-button:hover, .change-password-button:hover {
-  background-color:#21887f;
-}
-
-.verified {
-  background-color: #28a745;
-}
-
-.verified:hover {
-  background-color: #218838;
+.logout-button:hover{
+  background-color: transparent;
 }

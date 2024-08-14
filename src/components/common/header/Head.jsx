@@ -17,7 +17,7 @@ const Head = () => {
       <section className='head'>
         <div className='container flexSB'>
           <div className='logo'>
-            <h1>ACALEARN</h1>
+            <h1 style={{color:'#169d90'}} >ACALEARN</h1>
             <span>ONLINE EDUCATION & LEARNING</span>
           </div>
           <div className='auth-buttons'>
@@ -35,11 +35,9 @@ const Head = () => {
             </button>
             <button
               style={{
-                backgroundColor: '#ff5733',
-                color: 'white',
-              }}
-              onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#e04b29'}
-              onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#ff5733'}
+                backgroundColor: 'white',
+                color: '#1eb2a6',
+              }} 
               onClick={handleAdminLogin}
             >
               Admin Login

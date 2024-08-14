@@ -1,41 +1,92 @@
 /* Dashboard.css */
-.orders-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .orders-table th, .orders-table td {
-    padding: 16px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .orders-table th {
-    background-color: #1eb2a6;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .orders-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .orders-table tr:hover {
-    background-color: #e2f1f0;
-  }
-  
-  /* Additional styles */
-  .MuiDrawer-paper {
-    background-color: #1eb2a6; /* Sidebar background color */
-    color: white;
-    width: 240px; /* Adjust width as needed */
-  }
-  
-  .MuiDrawer-paper .MuiListItemIcon-root {
-    color: white; /* Icon color in sidebar */
-  }
-  
-  .MuiDrawer-paper .MuiTypography-root {
-    color: white; /* Text color in sidebar */
-  }
-  
+.dashboard-container {
+  padding: 20px;
+  background-color: #013440;
+  min-height: 100vh;
+  font-size: large;
+}
+
+.header-container {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.pay{
+  font-family: 'Arial', sans-serif;
+  background-color: #00c2b4;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #e7f7f8;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  height: 250px; /* Fixed height for uniform card size */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.card-content {
+  padding: 15px;
+  color: #013440;
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: 1.2em;
+}
+
+p {
+  margin: 5px 0;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.card-actions Button {
+  border-color: #00c2b4;
+  color: #00c2b4;
+}
+
+.card-actions Button:hover {
+  background-color: #00c2b4;
+  color: white;
+}
+
+.MuiDialogTitle-root {
+  background-color: #00c2b4;
+  color: white;
+}
+
+.MuiDialogContent-root {
+  background-color: #f2f2f2;
+}
+
+.MuiDialogActions-root {
+  background-color: #f2f2f2;
+}
+
+.MuiButton-root {
+  color: #00c2b4;
+}
+
+.MuiButton-root:hover {
+  background-color: #00c2b4;
+  color: white;
+}

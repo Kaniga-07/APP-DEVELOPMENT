@@ -1,187 +1,141 @@
-import React, { useState } from 'react';
-import {
-  AppBar, Toolbar, Typography, Drawer, List, ListItem, ListItemIcon,
-  CssBaseline, Container, Paper, Box, IconButton, Grid, Menu, MenuItem
-} from '@mui/material';
-import { Home, LibraryBooks, School, Settings, Assessment, ExitToApp, AccountCircle } from '@mui/icons-material';
-import { Line } from 'react-chartjs-2';
-import 'chart.js/auto';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Grid, TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import axios from 'axios';
 import './Dashboard.css';
-import Chatbot from '../chatbot/chatbot';
-
-const data = {
-  labels: ['00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00', '24:00'],
-  datasets: [
-    {
-      label: 'Courses ($)',
-      data: [0, 300, 600, 800, 1500, 2000, 2400, 2400, 2400],
-      fill: false,
-      borderColor: '#3e95cd',
-    }
-  ]
-};
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  const [paymentValues, setPaymentValues] = useState([]);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [editPayment, setEditPayment] = useState(null);
 
-  const handleProfileMenuClick = (event) => {
-    setAnchorEl(event.currentTarget);
+  useEffect(() => {
+    const fetchPaymentValues = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/myapp/api/save_payment/');
+        setPaymentValues(response.data);
+      } catch (err) {
+        console.error('Failed to fetch payment values', err);
+      }
+    };
+
+    fetchPaymentValues();
+  }, []);
+
+  const handleEditOpen = (payment) => {
+    setEditPayment(payment);
+    setEditDialogOpen(true);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleEditClose = () => {
+    setEditDialogOpen(false);
+    setEditPayment(null);
   };
 
-  const handleLogout = () => {
-    // Perform any logout logic if needed
-    navigate('/adminlogin'); // Redirect to admin login page
-    handleClose();
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditPayment({ ...editPayment, [name]: value });
   };
 
-  const handleNavigation = (path) => {
-    navigate(path);
+  const handleEditSubmit = async () => {
+    try {
+      await axios.put(`http://127.0.0.1:8000/myapp/api/save_payment/${editPayment.id}/`, editPayment);
+      setPaymentValues(paymentValues.map(payment =>
+        payment.id === editPayment.id ? editPayment : payment
+      ));
+      handleEditClose();
+    } catch (err) {
+      console.error('Failed to update payment', err);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`http://127.0.0.1:8000/myapp/api/save_payment/${id}/`);
+      setPaymentValues(paymentValues.filter(payment => payment.id !== id));
+    } catch (err) {
+      console.error('Failed to delete payment', err);
+    }
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="absolute" sx={{ backgroundColor: '#1eb2a6' }}>
-        <Toolbar>
-          <Typography variant="h6" noWrap sx={{ flexGrow: 1 ,textAlign:"center"}}>
-           ADMIN DASHBOARD
-          </Typography>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <IconButton
-              color="inherit"
-              onClick={handleProfileMenuClick}
-              sx={{ ml: 2 }}
-            >
-              <AccountCircle fontSize="large"/>
-            </IconButton>
-            <Menu
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-              anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-            >
-              <MenuItem onClick={handleLogout}>Logout</MenuItem>
-            </Menu>
-          </Box>
-          <Chatbot/>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-  variant="permanent"
-  sx={{
-    '& .MuiDrawer-paper': {
-      width: 70,
-      boxSizing: 'border-box',
-      backgroundColor: '#1eb2a6',
-      color: 'white',
-      display: 'flex',
-      flexDirection: 'column', // Ensure the sidebar items are stacked vertically
-      height: '100vh', // Full viewport height
-      position: 'relative', // Ensure it's positioned relative to its parent
-    },
-  }}
->
-
-        <Toolbar />
-        <List>
-    <ListItem button sx={{ width: '100%', justifyContent: 'center' }}>
-      <ListItemIcon><Home/></ListItemIcon>
-    </ListItem>
-    <ListItem button onClick={() => handleNavigation('/Assessment')} sx={{ width: '100%', justifyContent: 'center' }}>
-      <ListItemIcon><LibraryBooks/></ListItemIcon>
-    </ListItem>
-    <ListItem button onClick={() => handleNavigation('/enroll')} sx={{ width: '100%', justifyContent: 'center' }}>
-      <ListItemIcon><School/></ListItemIcon>
-    </ListItem>
-    <ListItem button onClick={() => handleNavigation('/settings')} sx={{ width: '100%', justifyContent: 'center' }}>
-      <ListItemIcon><Settings /></ListItemIcon>
-    </ListItem>
-    <ListItem button onClick={() => handleNavigation('/leaderboard')} sx={{ width: '100%', justifyContent: 'center' }}>
-      <ListItemIcon><Assessment/></ListItemIcon>
-    </ListItem>
-  </List>
-      </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, height: '100vh', overflow: 'auto' }}>
-        <Toolbar />
-        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={8} lg={9}>
-              <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 240 }}>
-                <Typography component="h2" variant="h6" color="primary" gutterBottom>
-                  Today
-                </Typography>
-                <Line data={data} />
-              </Paper>
-            </Grid>
-            <Grid item xs={12} md={4} lg={3}>
-              <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 240 }}>
-                <Typography component="h2" variant="h6" color="primary" gutterBottom>
-                  Amount
-                </Typography>
-                <Typography component="p" variant="h4">
-                  $3,024.00
-                </Typography>
-                <Typography color="text.secondary" sx={{ flex: 1 }}>
-                  on 15 March, 2019
-                </Typography>
-                <div>
-                  <a href="#">Students Enrolled</a>
+    <div className='pay'>
+      <h1 style={{textAlign:"center"}}>STUDENT PAYMENT DETAILS</h1>
+    <div className="dashboard-container">
+      <Grid container spacing={3}>
+        {paymentValues.map((payment) => (
+          <Grid item xs={12} sm={6} md={4} key={payment.id}>
+            <div className="card">
+              <div className="card-content">
+                <h3>{payment.cardholder_name}</h3>
+                <p>Card Number: {payment.card_number}</p>
+                <p>Expiration: {payment.expiration_month}/{payment.expiration_year}</p>
+                <p>Billing Address: {payment.billing_address}</p>
+                <div className="card-actions">
+                  <Button onClick={() => handleEditOpen(payment)} variant="outlined" color="primary">
+                    Edit
+                  </Button>
+                  <Button onClick={() => handleDelete(payment.id)} variant="outlined" color="secondary">
+                    Delete
+                  </Button>
                 </div>
-              </Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                <Typography component="h2" variant="h6" color="primary" gutterBottom>
-                  Recent Orders
-                </Typography>
-                <table className="orders-table">
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>Name</th>
-                      <th>Location</th>
-                      <th>Payment Method</th>
-                      <th>Amount</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>16 Mar, 2019</td>
-                      <td>Elvis Presley</td>
-                      <td>Tupelo, MS</td>
-                      <td>VISA &#x2022;&#x2022;&#x2022;&#x2022; 3719</td>
-                      <td>$312.44</td>
-                    </tr>
-                    <tr>
-                      <td>16 Mar, 2019</td>
-                      <td>Paul McCartney</td>
-                      <td>London, UK</td>
-                      <td>VISA &#x2022;&#x2022;&#x2022;&#x2022; 2574</td>
-                      <td>$866.99</td>
-                    </tr>
-                    <tr>
-                      <td>16 Mar, 2019</td>
-                      <td>Tom Scholz</td>
-                      <td>Boston, MA</td>
-                      <td>MC &#x2022;&#x2022;&#x2022;&#x2022; 1253</td>
-                      <td>$100.81</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </Paper>
-            </Grid>
+              </div>
+            </div>
           </Grid>
-        </Container>
-      </Box>
-    </Box>
+        ))}
+      </Grid>
+          </div>
+
+      <Dialog open={editDialogOpen} onClose={handleEditClose}>
+        <DialogTitle>Edit Payment</DialogTitle>
+        <DialogContent>
+          <TextField
+            name="card_number"
+            label="Card Number"
+            type="text"
+            fullWidth
+            value={editPayment?.card_number || ''}
+            onChange={handleEditChange}
+            margin="dense"
+          />
+          <TextField
+            name="expiration_month"
+            label="Expiration Month"
+            type="text"
+            fullWidth
+            value={editPayment?.expiration_month || ''}
+            onChange={handleEditChange}
+            margin="dense"
+          />
+          <TextField
+            name="expiration_year"
+            label="Expiration Year"
+            type="text"
+            fullWidth
+            value={editPayment?.expiration_year || ''}
+            onChange={handleEditChange}
+            margin="dense"
+          />
+          <TextField
+            name="billing_address"
+            label="Billing Address"
+            type="text"
+            fullWidth
+            value={editPayment?.billing_address || ''}
+            onChange={handleEditChange}
+            margin="dense"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleEditClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleEditSubmit} color="primary">
+            Submit
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </div>
+
   );
 };
 

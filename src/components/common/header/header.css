@@ -13,6 +13,11 @@
   align-items: center;
 }
 
+.logo
+{
+  color: #fff;
+}
+
 .auth-buttons {
   display: flex;
   gap: 10px;
@@ -38,12 +43,13 @@
 }
 
 .auth-buttons .admin-login-btn {
-  color: #ff5733;
+  color:#1eb2a6 ;
   background-color: white;
 }
 
 .auth-buttons .admin-login-btn:hover {
-  background-color: #e04b29;
+  background-color: aliceblue;
+  color:#fff;
 }
 
 /*--------head------------*/
@@ -62,7 +68,7 @@ header ul {
   padding: 30px 20px;
 }
 header ul li a {
-  color:rgb(228, 228, 13);
+  color:black;
   font-weight: 500;
   transition: 0.5s;
 }
